@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mark.demo.dfs</groupId>
+  <artifactId>dfs-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>dfs-parent</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+	<modules>
+		<module>fastDfs-demo Maven Webapp</module>
+		<module>tdfs-demo Maven Webapp</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/com.github.tobato/fastdfs-client -->
+			<dependency>
+			    <groupId>com.github.tobato</groupId>
+			    <artifactId>fastdfs-client</artifactId>
+			    <version>1.25.4-RELEASE</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+  		<resources>
+	       <resource>
+	           <directory>src/main/resources</directory>
+	           <includes>
+	               <include>**/*.xml</include>
+	               <include>**/*.properties</include>
+	           </includes>
+	           <filtering>true</filtering>
+	       </resource>
+	   </resources>
+	   <pluginManagement>
+	   		<plugins>
+		    	<plugin>  
+		            <groupId>org.apache.maven.plugins</groupId>  
+		            <artifactId>maven-compiler-plugin</artifactId>  
+		            <version>2.3.2</version>  
+		            <configuration>  
+		                <source>1.8</source>  
+		                <target>1.8</target>  
+		            </configuration>  
+		        </plugin>
+		        <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<parallel>methods</parallel>
+						<threadCount>10</threadCount>
+					</configuration>
+				</plugin>
+				<plugin>  
+		         <groupId>org.apache.maven.plugins</groupId>  
+		         <artifactId>maven-resources-plugin</artifactId>  
+		         <version>2.6</version>  
+		         <executions>  
+		           <execution>  
+		              <id>copy-resources</id>   
+		              <phase>validate</phase>  
+		              <goals>  
+		                <goal>copy-resources</goal>  
+		              </goals>  
+		              <configuration>  
+		              	 <encoding>UTF-8</encoding>  
+		                 <outputDirectory>${project.build.outputDirectory}</outputDirectory>  
+		                  <resources>  
+		                     <resource>  
+		                        <!-- 指定resources插件处理哪个目录下的资源文件 -->  
+		                        <directory>src/main/resources</directory> 
+		                        <filtering>true</filtering>  
+		                     </resource>  
+		                  </resources>  
+		              </configuration>  
+		           </execution>  
+		         </executions>  
+		  
+		         </plugin>  
+		    </plugins>
+	   </pluginManagement>
+  </build>
+	<profiles>
+	  		<profile>
+	  			<id>dev</id>
+	  			<activation>
+	  				<activeByDefault>true</activeByDefault>
+	  			</activation>
+	  			<properties>
+	  				<p.redis.master.host>192.168.198.128</p.redis.master.host>
+	  				<p.redis.master.port>7000</p.redis.master.port>
+	  				<p.redis.master.pass>none</p.redis.master.pass>
+	  				<p.jdbc.driver>com.mysql.jdbc.Driver</p.jdbc.driver>
+	  				<p.master.jdbc.url>jdbc:mysql://192.168.198.129:3306/shiro?failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;allowMultiQueries=true</p.master.jdbc.url>
+	  				<p.master.jdbc.username>root</p.master.jdbc.username>
+	  				<p.master.jdbc.password>mark</p.master.jdbc.password>
+	  			</properties>
+	  		</profile>
+	  </profiles>
+</project>
