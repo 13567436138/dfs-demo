@@ -9,9 +9,8 @@
         		</div>
         		<div>
         			<form  id='searchForm' action="" method="post">
-        				菜单名称:
+        				创建时间:
         				<input type="text" id="menuName" name="menuName"/>
-        				父菜单名称:
         				<input type="text" id="pmenuName" name="parent.menuName"/>
         				<input type="button" onclick="loadList(1);" value="查询"/>
         			</form>
@@ -25,21 +24,21 @@
 			<form id='addForm' action="" method="post">
 				<table>
 						<tr>
-							<td>菜单名称:</td>
+							<td>缩略图:</td>
 							<td><input type="text" id="departmentcode" name="departmentcode" style="width:120px"/></td>
-							<td>菜单描述:</td>
+							<td>图片名称:</td>
 							<td><input type="text" id="departmentname" name="departmentname" style="width:120px"/></td>
 						</tr>
 						<tr>
-							<td>菜单连接:</td>
+							<td>图片后缀:</td>
 							<td><input type="text" id="deptdescription" name="deptdescription" style="width:120px"/></td>
-							<td>菜单序号:</td>
+							<td>路径:</td>
 							<td><input type="text" id="remarks" name="remarks" style="width:120px"/></td>
 						</tr>
 						<tr>
-							<td>父菜单:</td>
+							<td>大小:</td>
 							<td><input type="text" id="operatorbankcode" name="operatorbankcode" style="width:120px"/></td>
-							<td>菜单序号:</td>
+							<td>id:</td>
 							<td><input type="text" id="operatorcode" name="operatorcode" style="width:120px"/></td>
 						</tr>
 						
@@ -72,15 +71,14 @@
 	        url:searchUrl, 
 	        toolbar:'#tb',
 	        columns:[[   
-                   		{field:'id',title:'菜单编号',width:100,align:'center'},
-                   		{field:'menuName',title:'菜单名称',width:100,align:'center'},
-                   		{field:'parent',title:'父菜单',width:100,align:'center',formatter:function(cellvalue, options, rowObject){
+                   		{field:'id',title:'缩略图',width:150,align:'center'},
+                   		{field:'menuName',title:'图片名称',width:150,align:'center'},
+                   		{field:'parent',title:'图片后缀',width:100,align:'center',formatter:function(cellvalue, options, rowObject){
                    			return cellvalue.menuName;
                    		}},
-                   		{field:'link',title:'连接',width:200,align:'center'},
-                   		{field:'menuDesc',title:'描述',width:300,align:'center'},
-                   		{field:'order',title:'序号',width:100,align:'center'},
-                   		{field:'icon',title:'图标',width:100,align:'center'}
+                   		{field:'link',title:'路径',width:400,align:'center'},
+                   		{field:'order',title:'大小',width:100,align:'center'},
+                   		{field:'icon',title:'id',width:100,align:'center'}
 	        ]],
 	        
 	         onBeforeLoad: function (params) {

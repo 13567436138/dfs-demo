@@ -124,6 +124,7 @@ create table dfsfile(
 	`name`  varchar(100),
 	ext varchar(20),
 	`length` int,
-	author varchar(50)
+	author varchar(50),
+	`type` int
 	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
