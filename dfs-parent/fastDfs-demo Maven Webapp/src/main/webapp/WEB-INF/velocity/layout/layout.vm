@@ -1,25 +1,26 @@
 #parse("default/header.vm")
 #set($csrfToken=$request.getAttribute('csrfToken'))
-<body class="ui-layout-container">
-    <form:form id="_csrf-form" cssStyle="display: none">
+<body class="easyui-layout">
+    <form id="_csrf-form" cssStyle="display: none">
 		<input type="hidden" name="csrfToken" value="$csrfToken" />
-	</form:form>
+	</form>
 
-	<div class="ui-layout-north" style="height:60px;background:#B3DFDA;padding:10px">
+	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
 		<h1>mark's technic world</h1>
 	</div>
-	<div class="ui-layout-west" style="width:150px;padding:0px;">
-		<div id="nav"   fit="true"  border="false">
+	<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:0px;">
+		<div id="nav" class="easyui-accordion"  fit="true"  border="false">
 			
 		</div>
 	</div>
 	
-	<div class="ui-layout-south" style="height:50px;background:#A9FACD;padding:10px;">
+	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">
 		<h1>all right reserved!</h1>
 	</div>
-	<div class="ui-layout-center" id="tabs" >
+	<div class="easyui-tabs" id="tabs" data-options="region:'center',title:'Center'">
+		$screen_content
 	</div>
-	<div id="mm"  style="width: 200px;">
+	<div id="mm" class="easyui-menu" style="width: 200px;">
 		<div id="mm-tabupdate">
 			刷新
 		</div>
@@ -42,12 +43,4 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
-	$(function(){
-		$('body').layout({ applyDefaultStyles: true });  
-		
-		$("#mm" ).menu();
-	});
-</script>
-</script>
 </html>
