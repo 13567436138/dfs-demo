@@ -64,7 +64,7 @@
 	<bean id="redisSessionManager" class="com.mark.demo.dfs.session.RedisSessionManager"/>
 	
     <!-- csrf 令牌管理 -->
-    <bean id="csrfTokenManager" class="com.mark.demo.dfs.interceptor.CSRFTokenManager">
+    <bean id="csrfTokenManager" name="csrfTokenManager" class="com.mark.demo.dfs.interceptor.CSRFTokenManager">
         <property name="redisSessionManager" ref="redisSessionManager"/>
     </bean>
 
@@ -253,5 +253,5 @@
         </property>
     </bean> -->
     
-    
+    <bean id="springUtils" class="com.mark.demo.dfs.utils.SpringUtils"></bean>
 </beans>

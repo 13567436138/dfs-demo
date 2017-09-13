@@ -60,12 +60,12 @@ public class LoginController extends GenericController
             User onLine = OnLineUserUtils.getPrincipal();
             if (null != onLine)
             {// 如果当前是已登陆用户，就直接跳到用户后台
-                return "redirect:/admins/index.ftl";
+                return "redirect:/admins/index";
             }
           
             model.addAttribute("redirect", URLDecoder.decode(redirect, CharsetConst.CHARSET_UT));
         }
-        return "common/login.ftl";
+        return "common/login";
     }
     
     

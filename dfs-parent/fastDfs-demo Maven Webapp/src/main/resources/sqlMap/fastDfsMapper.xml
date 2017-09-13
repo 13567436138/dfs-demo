@@ -3,5 +3,15 @@
 <mapper namespace="com.mark.demo.dfs.mapper.FastDFSFileMapper">
 	<cache eviction="LRU" type="com.mark.demo.dfs.mybatis.cache.MyBatisRedisCache" ></cache>
     
+    <insert id="insert" parameterType="FastDFSFile">
+    	insert into dfsfile(`path`,`name`,ext,`length`,author)
+    	values(
+    		#{path},
+    		#{name},
+    		#{ext},
+    		#{length},
+    		#{author}
+    	)
+    </insert>
 </mapper>
 

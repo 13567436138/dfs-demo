@@ -1,6 +1,14 @@
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta http-equiv="Cache-Control" content="no-store"/>
-<meta http-equiv="Pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="3600"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+#set($base=$request.contextPath )
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http:/www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<base id="base" href=$base>  
+<title>index</title> 
+<link rel="stylesheet" type="text/css" href="$base/css/default.css">
+<link rel="stylesheet" type="text/css" href="$base/js/jquery-ui-1.12.1.custom/jquery-ui.css">
+<script type="text/javascript" src="$base/js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="$base/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script> 
+<script type="text/javascript" src="$base/js/jquery.layout-latest.js"></script>
+<script type="text/javascript" src="$base/js/tools.js"></script>
+</head>  
