@@ -3,6 +3,7 @@ package com.mark.demo.dfs.mybatis.cache;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -45,7 +46,7 @@ public class RedisCachingManagerImpl implements RedisCachingManager{
 			Set<String> relatedStatements = observers.get(observable);
 			for(String statementId:relatedStatements)
 			{
-				JedisUtils.removeMapField(MyBatisRedisCache.mybatis_cache_prefix, statementId);
+				JedisUtils.del(MyBatisRedisCache.mybatis_cache_prefix+statementId);
 			}
 		}
 	}

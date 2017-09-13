@@ -14,6 +14,6 @@ public class ImageController {
 	
 	@RequestMapping("/list")
 	public String list(){
-		return "image/list";
+		return "admins/image/list";
 	}
 }

@@ -717,6 +717,28 @@ public class JedisUtils
     	return true;
     }
     
+    public static Object getMapFiled(String key,byte[] field){
+    	Jedis jedis = null;
+    	Object value=null;
+    	try
+        {
+            jedis = getConnection(key);
+            if (jedis.exists(key))
+            {
+                value = ObjectUtils.unserialize(jedis.hget(key.getBytes(), field));
+            }
+        }
+        catch (JedisHandleException e)
+        {
+            LoggerUtils.logError(logger, e.getMessage());
+        }
+        finally
+        {
+            releaseConnection(jedis);
+        }
+        return value;
+    }
+    
     /**
      * 获取map中的一个字段
      * @param key
@@ -745,27 +767,7 @@ public class JedisUtils
         return value;
     }
     
-    public static Object getMapFiled(String key,byte[] field){
-    	Jedis jedis = null;
-    	Object value=null;
-    	try
-        {
-            jedis = getConnection(key);
-            if (jedis.exists(key))
-            {
-                value =ObjectUtils.unserialize(jedis.hget(key.getBytes(), field));
-            }
-        }
-        catch (JedisHandleException e)
-        {
-            LoggerUtils.logError(logger, e.getMessage());
-        }
-        finally
-        {
-            releaseConnection(jedis);
-        }
-        return value;
-    }
+   
     /**
      * 获取Map缓存
      * @param key 键
