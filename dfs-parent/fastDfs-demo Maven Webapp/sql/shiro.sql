@@ -42,7 +42,8 @@ insert into menu(pid,menuName,menuDesc,`link`,`order`)values((select a.menuId fr
 insert into menu(pid,menuName,menuDesc,`link`,`order`)values((select a.menuId from (select menuId from menu where menuName='系统管理')a),'权限管理','权限管理','/permission/list',2);
 insert into menu(pid,menuName,menuDesc,`link`,`order`)values((select a.menuId from (select menuId from menu where menuName='系统管理')a),'分组管理','分组管理','/group/list',2);
 insert into menu(pid,menuName,menuDesc,`link`,`order`)values((select a.menuId from (select menuId from menu where menuName='系统管理')a),'用户管理','用户管理','/user/list',2);
-
+insert into menu(pid,menuName,menuDesc,`link`,`order`)values(-1,'相册管理','相册管理',null,2);
+insert into menu(pid,menuName,menuDesc,`link`,`order`)values((select a.menuId from (select menuId from menu where menuName='相册管理')a),'图片管理','图片管理','/image/list',2);
 -- ----------------------------
 -- Table structure for menu_role
 -- ----------------------------
