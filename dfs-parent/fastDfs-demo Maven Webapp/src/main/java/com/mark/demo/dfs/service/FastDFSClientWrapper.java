@@ -52,13 +52,13 @@ public class FastDFSClientWrapper {
     }
     
     public byte[] downloadFile(String path){
-    	String groupName=getGroupName(path);
+    	StorePath storePath = StorePath.praseFromUrl(path);
     	DownloadByteArray downloadByteArray = new DownloadByteArray();
-    	byte[]data= storageClient.downloadFile(groupName, getFilePath(path,groupName), downloadByteArray);
+    	byte[]data= storageClient.downloadFile(storePath.getGroup(), storePath.getPath(), downloadByteArray);
     	return data;
     }
     
-    private String getGroupName(String path){
+   /* private String getGroupName(String path){
     	int groupIndex=path.indexOf("group");
     	int groupIndexEnd=path.indexOf("/", groupIndex);
     	return path.substring(groupIndex,groupIndexEnd);
@@ -66,7 +66,7 @@ public class FastDFSClientWrapper {
     
     private String getFilePath(String path,String groupName){
     	return path.substring(path.indexOf(groupName)+groupName.length()+1);
-    }
+    }*/
 
     /**
      * 将一段字符串生成一个文件上传
