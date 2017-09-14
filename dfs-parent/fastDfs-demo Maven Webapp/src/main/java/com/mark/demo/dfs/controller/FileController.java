@@ -15,6 +15,7 @@ import com.mark.demo.dfs.entity.FastDFSFile;
 import com.mark.demo.dfs.entity.User;
 import com.mark.demo.dfs.service.FastDFSClientWrapper;
 import com.mark.demo.dfs.service.FastDFSFileService;
+import com.mark.demo.dfs.utils.StringUtils;
 
 /*
 *hxp(hxpwangyi@126.com)
@@ -35,13 +36,14 @@ public class FileController {
 	public String uploadFile(MultipartFile file) throws IOException{
 		String path=dfsClient.uploadFile(file);
 		Subject subject=SecurityUtils.getSubject();
-		FastDFSFile entity=new FastDFSFile(path, file.getOriginalFilename(),FilenameUtils.getExtension(file.getOriginalFilename()) , file.getSize(), ((User)subject.getPrincipal()).getUserName());
+		String ext=FilenameUtils.getExtension(file.getOriginalFilename());
+		FastDFSFile entity=new FastDFSFile(path, file.getOriginalFilename(),ext , file.getSize(), ((User)subject.getPrincipal()).getUserName(),StringUtils.isImage(ext));
 		fastDFSFileService.insert(entity);
 		return "ok";
 	}
 	
 	@RequestMapping("/show")
-	public void showFile(){
-		
+	public void showFile(String path){
+		System.out.println(path);
 	}
 }

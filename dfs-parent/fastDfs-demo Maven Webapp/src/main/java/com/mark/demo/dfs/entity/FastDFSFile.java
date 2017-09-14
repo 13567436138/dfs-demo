@@ -14,6 +14,9 @@ public class FastDFSFile extends GenericEntity{
     private String ext;
     private long length;
     private String author = FileManagerConfig.FILE_DEFAULT_AUTHOR;
+    private int type;//1文件，2图片
+    
+    public FastDFSFile(){}
     
     public FastDFSFile(String path, String ext) {
         this.path = path;
@@ -27,12 +30,13 @@ public class FastDFSFile extends GenericEntity{
     }
 
     public FastDFSFile(String path, String name, String ext, long length,
-            String author) {
+            String author,int type) {
     	this.path = path;
         this.name = name;
         this.ext = ext;
         this.length = length;
         this.author = author;
+        this.type=type;
     }
     
 	
@@ -70,6 +74,14 @@ public class FastDFSFile extends GenericEntity{
 
 	public void setLength(long length) {
 		this.length = length;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
     
     

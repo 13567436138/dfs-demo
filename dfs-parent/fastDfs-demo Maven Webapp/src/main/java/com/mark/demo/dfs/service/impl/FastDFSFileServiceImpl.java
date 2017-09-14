@@ -2,6 +2,7 @@ package com.mark.demo.dfs.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.mark.demo.dfs.base.GenericServiceImpl;
 import com.mark.demo.dfs.entity.FastDFSFile;
@@ -13,7 +14,7 @@ import com.mark.demo.dfs.service.FastDFSFileService;
 *2017年9月12日
 *
 */
-@Component
+@Service
 public class FastDFSFileServiceImpl extends GenericServiceImpl<FastDFSFile>implements FastDFSFileService {
 	private FastDFSFileMapper fastDFSFileMapper;
 	
