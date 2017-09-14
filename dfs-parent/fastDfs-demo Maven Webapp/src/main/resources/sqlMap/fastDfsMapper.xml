@@ -4,13 +4,14 @@
 	<cache eviction="LRU" type="com.mark.demo.dfs.mybatis.cache.MyBatisRedisCache" ></cache>
     
     <insert id="insert" parameterType="FastDFSFile">
-    	insert into dfsfile(`path`,`name`,ext,`length`,author)
+    	insert into dfsfile(`path`,`name`,ext,`length`,author,`type`)
     	values(
     		#{path},
     		#{name},
     		#{ext},
     		#{length},
-    		#{author}
+    		#{author},
+    		#{type}
     	)
     </insert>
 </mapper>

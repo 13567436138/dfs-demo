@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.tobato.fastdfs.domain.MateData;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
+import com.github.tobato.fastdfs.proto.storage.DownloadByteArray;
+import com.github.tobato.fastdfs.proto.storage.DownloadFileWriter;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.mark.demo.dfs.utils.StringUtils;
 
@@ -45,6 +49,23 @@ public class FastDFSClientWrapper {
     public String uploadFile(MultipartFile file) throws IOException {
         StorePath storePath = storageClient.uploadFile(file.getInputStream(),file.getSize(), FilenameUtils.getExtension(file.getOriginalFilename()),null);
         return storePath.getFullPath();
+    }
+    
+    public byte[] downloadFile(String path){
+    	String groupName=getGroupName(path);
+    	DownloadByteArray downloadByteArray = new DownloadByteArray();
+    	byte[]data= storageClient.downloadFile(groupName, getFilePath(path,groupName), downloadByteArray);
+    	return data;
+    }
+    
+    private String getGroupName(String path){
+    	int groupIndex=path.indexOf("group");
+    	int groupIndexEnd=path.indexOf("/", groupIndex);
+    	return path.substring(groupIndex,groupIndexEnd);
+    }
+    
+    private String getFilePath(String path,String groupName){
+    	return path.substring(path.indexOf(groupName)+groupName.length()+1);
     }
 
     /**
